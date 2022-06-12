@@ -21,11 +21,12 @@ Route::group(['middleware' => ['auth:sanctum']], function(){
     Route::post('products/{id}', [ProductsController::class, 'destroy']);
     Route::put('products/{id}', [ProductsController::class, 'update']);
     Route::post('products', [ProductsController::class, 'store']);
-    Route::get('/products/search/{name}', [ProductsController::class, 'search']);
+    Route::get('products/search/{name}', [ProductsController::class, 'search']);
+    Route::post('logout', [UsersController::class, 'logout']);
 });
 
 Route::post('register', [UsersController::class, 'register']);
+Route::post('login', [UsersController::class, 'login']);
 Route::apiResource('clients', ClientsController::class);
 Route::apiResource('employees', EmployeesController::class);
 Route::apiResource('products', ProductsController::class);
-
